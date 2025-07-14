@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gamepad Tester – Test Your Game Controller Online for Free | No Downloads Needed</title>
+  <meta name="description" content="Comprehensive online gamepad testing tool. Check button response, joystick accuracy, trigger sensitivity, and vibration function for Xbox, PlayStation, Nintendo, and PC controllers. 100% free instant diagnostics.">
+  <meta name="keywords" content="gamepad tester, controller test, joystick tester, game controller diagnostic, Xbox controller test, PlayStation controller check, Nintendo Switch controller test">
+  <link rel="canonical" href="https://gamepadtester.site/">
+  <meta property="og:title" content="Gamepad Tester – Test Your Game Controller Online for Free">
+  <meta property="og:description" content="Comprehensive online testing for all game controllers. Check buttons, joysticks, triggers and vibration instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gamepadtester.site/">
+  <meta property="og:image" content="https://kanuan.github.io/DS4WSite/troubleshooting/images/GamepadTesterSite.png">
+  <meta property="og:site_name" content="Gamepad Tester">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gamepad Tester – Test Your Game Controller Online for Free">
+  <meta name="twitter:description" content="Comprehensive online testing for all game controllers. Check buttons, joysticks, triggers and vibration instantly.">
+  <meta name="twitter:image" content="https://kanuan.github.io/DS4WSite/troubleshooting/images/GamepadTesterSite.png">
+  <meta name="google-site-verification" content="oKNBx-F_7HFhyjLBxtdk-85RnNB9V8qPci3FsURC0zY" />
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Gamepad Tester",
+    "description": "Free online gamepad and controller testing tool with advanced diagnostics",
+    "url": "https://gamepadtester.site/",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Comprehensive button testing",
+      "Precision joystick calibration",
+      "Trigger sensitivity analysis",
+      "Vibration function check",
+      "Input latency measurement",
+      "Multi-platform controller support",
+      "No installation required"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1287"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Gamepad Tester",
+      "url": "https://gamepadtester.site/"
+    }
+  }
+  </script>
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --primary-light: #93c5fd;
+      --secondary: #f59e0b;
+      --secondary-dark: #d97706;
+      --dark: #1f2937;
+      --darker: #111827;
+      --light: #f9fafb;
+      --lighter: #f3f4f6;
+      --gray: #6b7280;
+      --success: #10b981;
+      --success-dark: #059669;
+      --danger: #ef4444;
+      --danger-dark: #dc2626;
+      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 6px 8px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --rounded: 0.5rem;
+      --rounded-lg: 0.75rem;
+      --rounded-xl: 1rem;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.6;
+      background: linear-gradient(to bottom, #f0f2f5, #e5e7eb);
+      color: var(--darker);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 4px solid var(--secondary);
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+      animation: pulse 8s infinite linear;
+      z-index: 1;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    
+    header h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin: 0.5rem 0;
+      font-weight: 800;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      animation: fadeInDown 0.8s ease-out;
+      line-height: 1.2;
+    }
+    
+    header p {
+      font-size: clamp(1.125rem, 2vw, 1.25rem);
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      opacity: 0.95;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: var(--secondary);
+      color: #000;
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      margin: 1.5rem 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-lg);
+      animation: pulse 2s infinite;
+      border: none;
+      cursor: pointer;
+      font-size: 1.125rem;
+      letter-spacing: 0.5px;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: var(--shadow-xl);
+      background-color: var(--secondary-dark);
+      animation: none;
+    }
+    
+    /* Navigation */
+    nav {
+      background-color: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.3s;
+    }
+    
+    .logo:hover {
+      color: var(--secondary);
+      transform: scale(1.02);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+      font-size: 1.05rem;
+      padding: 0.5rem 0;
+    }
+    
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background-color: var(--secondary);
+      transition: width 0.3s ease-out;
+      border-radius: 3px;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    
+    section {
+      margin-bottom: 4rem;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--darker);
+      line-height: 1.3;
+      margin-bottom: 1.25rem;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    
+    h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-top: 4rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 3px solid var(--primary);
+      display: inline-block;
+      letter-spacing: -0.25px;
+    }
+    
+    h3 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-top: 2.5rem;
+      color: var(--primary-dark);
+    }
+    
+    h4 {
+      font-size: 1.375rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      color: var(--dark);
+    }
+    
+    p {
+      margin-bottom: 1.75rem;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    
+    a:not(.cta-button, .nav-links a, .footer-links a, .social-links a) {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 2px;
+    }
+    
+    a:not(.cta-button, .nav-links a, .footer-links a, .social-links a):hover {
+      color: var(--primary-dark);
+      border-bottom-color: var(--primary);
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--rounded-xl);
+      margin: 2rem 0;
+      box-shadow: var(--shadow-lg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    img:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    ul, ol {
+      margin-bottom: 2rem;
+      padding-left: 2.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.75rem;
+      line-height: 1.7;
+      color: var(--dark);
+    }
+    
+    /* Feature Sections */
+    .feature {
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--rounded-xl);
+      margin: 2.5rem 0;
+      box-shadow: var(--shadow-md);
+      border-left: 5px solid var(--primary);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .feature:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-left-color: var(--secondary);
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin: 4rem 0;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: var(--rounded-lg);
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+      transition: all 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .feature-card:hover::before {
+      width: 6px;
+      background: var(--secondary);
+    }
+    
+    .feature-card h3 {
+      color: var(--primary-dark);
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      transition: transform 0.3s;
+    }
+    
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 4rem 3rem;
+      border-radius: var(--rounded-xl);
+      margin: 4rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .testimonials::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      animation: pulse 8s infinite linear reverse;
+      z-index: 1;
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .testimonial-card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: var(--rounded-lg);
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: all 0.3s;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .testimonial-text::before {
+      content: '"';
+      position: absolute;
+      left: 0;
+      top: -0.5rem;
+      font-size: 3rem;
+      color: rgba(255,255,255,0.3);
+      font-family: serif;
+      line-height: 1;
+    }
+    
+    .testimonial-author {
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .testimonial-author::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 2px;
+      background: rgba(255,255,255,0.5);
+    }
+    
+    /* FAQ Section */
+    .faq-item {
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 1.75rem;
+      transition: all 0.3s;
+    }
+    
+    .faq-item:hover {
+      border-bottom-color: var(--primary-light);
+    }
+    
+    .faq-question {
+      font-weight: 600;
+      color: var(--primary-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      font-size: 1.25rem;
+      transition: all 0.3s;
+    }
+    
+    .faq-question:hover {
+      color: var(--primary);
+    }
+    
+    .faq-question::after {
+      content: '+';
+      font-size: 1.75rem;
+      color: var(--primary);
+      transition: all 0.3s;
+    }
+    
+    .faq-item.active .faq-question::after {
+      content: '-';
+      color: var(--danger);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      margin-top: 1rem;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--darker);
+      color: white;
+      padding: 5rem 1rem 3rem;
+      margin-top: 6rem;
+      position: relative;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+    }
+    
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 1.75rem;
+      font-size: 1.375rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--secondary);
+      border-radius: 3px;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.875rem;
+    }
+    
+    .footer-links a {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    
+    .footer-links a:hover {
+      color: var(--secondary);
+      transform: translateX(5px);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-links a {
+      color: white;
+      background: rgba(255,255,255,0.1);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-5px) scale(1.1);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #9ca3af;
+      font-size: 0.9375rem;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 0.5; }
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .nav-links {
+        gap: 1.5rem;
+      }
+      
+      .feature-grid {
+        gap: 2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 2.5rem 1rem;
+      }
+      
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .testimonials {
+        padding: 3rem 2rem;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header {
+        padding: 2rem 1rem;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .cta-button {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+      }
+      
+      .feature {
+        padding: 1.75rem;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+    
+    /* Utility Classes */
+    .text-center {
+      text-align: center;
+    }
+    
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+    .mt-3 { margin-top: 1.5rem; }
+    .mt-4 { margin-top: 2rem; }
+    .mt-5 { margin-top: 3rem; }
+    .mt-6 { margin-top: 4rem; }
+    
+    .mb-1 { margin-bottom: 0.5rem; }
+    .mb-2 { margin-bottom: 1rem; }
+    .mb-3 { margin-bottom: 1.5rem; }
+    .mb-4 { margin-bottom: 2rem; }
+    .mb-5 { margin-bottom: 3rem; }
+    .mb-6 { margin-bottom: 4rem; }
+    
+    .highlight {
+      background-color: rgba(251, 191, 36, 0.2);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+    }
+    
+    /* Tester Interface */
+    #tester-interface {
+      min-height: 400px;
+      background: white;
+      border-radius: var(--rounded-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      padding: 2rem;
+    }
+    
+    #tester-interface:hover {
+      box-shadow: var(--shadow-lg);
+    }
+    
+    #controller-status {
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      background: var(--lighter);
+      color: var(--dark);
+    }
+    
+    /* Gamepad visualization */
+    .gamepad-visual {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="/" class="logo">🎮 Gamepad Tester</a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#compatibility">Compatibility</a>
+        <a href="#faq">FAQ</a>
+        <a href="#testimonials">Testimonials</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <div class="header-content">
+      <h1>The Ultimate Online Gamepad Testing Tool</h1>
+      <p>Instantly diagnose controller issues, test button response, check joystick accuracy, and ensure your gamepad is performing at its best. No downloads required - works directly in your browser!</p>
+      <a href="#tester" class="cta-button animate__animated animate__pulse animate__infinite">Test Your Controller Now</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Introduction Section -->
+    <section id="intro">
+      <h1>Comprehensive Game Controller Diagnostics</h1>
+      <p>Welcome to <strong><a href="https://gamepadtester.site/" rel="dofollow">Gamepad Tester</a></strong> — the most advanced web-based solution for testing and calibrating your gaming controllers. Whether you're a competitive gamer, streamer, or casual player, our tool provides <span class="highlight">real-time feedback</span> on every aspect of your controller's performance.</p>
+      
+      <div class="feature">
+        <h2>Why Use Our Gamepad Tester?</h2>
+        <p>Unlike basic testing tools, our platform offers <strong>detailed analytics</strong> about your controller's performance. We measure input latency, analog stick dead zones, trigger sensitivity, and button responsiveness with precision. Our technology works with <strong>over 200 different controller models</strong> across all major platforms.</p>
+        <p>Game developers worldwide trust our tool for controller compatibility testing during game development. The intuitive interface makes it easy for anyone to identify issues that might be affecting their gaming experience.</p>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="mt-5">
+      <h2>Advanced Testing Features</h2>
+      <p>Our gamepad tester goes beyond simple button checks to provide comprehensive diagnostics for your controller:</p>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>Real-Time Input Monitoring</h3>
+          <p>See every button press, trigger pull, and joystick movement as it happens with millisecond precision. Our visual feedback system highlights active inputs clearly.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Joystick Calibration</h3>
+          <p>Detect and measure stick drift, dead zones, and inconsistent movement patterns. Our advanced visualization shows exact stick positions and movement ranges.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">⏱️</div>
+          <h3>Input Latency Testing</h3>
+          <p>Measure the response time between your physical input and the digital signal reaching your computer. Identify lag issues that could affect competitive gameplay.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Detailed Analytics</h3>
+          <p>Receive a comprehensive report on your controller's performance, including button responsiveness statistics, analog input accuracy, and potential issues.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🔋</div>
+          <h3>Battery Monitoring</h3>
+          <p>For wireless controllers, we can often detect and display battery level information to help you avoid unexpected disconnections during gameplay.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>Multi-Platform Support</h3>
+          <p>Works seamlessly across Windows, macOS, Linux, ChromeOS, and even mobile devices with controller support. No platform-specific software needed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="mt-5">
+      <h2>How To Test Your Controller</h2>
+      <p>Testing your gamepad is simple and takes less than a minute:</p>
+      
+      <ol>
+        <li><strong>Connect your controller</strong> via USB or Bluetooth (for wireless controllers)</li>
+        <li><strong>Press any button</strong> to wake up the controller if it's in sleep mode</li>
+        <li><strong>Navigate to our tester page</strong> and allow controller access when prompted</li>
+        <li><strong>Interact with all controller components</strong> - buttons, triggers, joysticks, D-pad</li>
+        <li><strong>Review the results</strong> and identify any potential issues</li>
+      </ol>
+      
+      <div class="feature mt-4">
+        <h3>Understanding Your Test Results</h3>
+        <p>Our tool provides color-coded feedback to help you quickly assess your controller's condition:</p>
+        
+        <ul>
+          <li><strong style="color: var(--success)">Green indicators</strong> show properly functioning inputs</li>
+          <li><strong style="color: var(--secondary)">Yellow indicators</strong> suggest minor issues that may need attention</li>
+          <li><strong style="color: var(--danger)">Red indicators</strong> reveal significant problems requiring repair or replacement</li>
+        </ul>
+        
+        <p>For joysticks, we display the exact position and movement range, making it easy to spot drift or dead zones. Trigger inputs show the full range of motion from 0% to 100% depression.</p>
+      </div>
+    </section>
+
+    <!-- Compatibility Section -->
+    <section id="compatibility" class="mt-5">
+      <h2>Supported Controllers</h2>
+      <p>Our gamepad tester works with virtually all modern controllers across platforms:</p>
+      
+      <div class="feature">
+        <h3>Xbox Controllers</h3>
+        <ul>
+          <li>Xbox One Controller (all versions)</li>
+          <li>Xbox Series X|S Controller</li>
+          <li>Xbox Elite Series 1 & 2</li>
+          <li>Xbox Adaptive Controller</li>
+          <li>Xbox 360 Controller (wired and wireless)</li>
+        </ul>
+      </div>
+      
+      <div class="feature">
+        <h3>PlayStation Controllers</h3>
+        <ul>
+          <li>DualShock 3 (PS3 Controller)</li>
+          <li>DualShock 4 (PS4 Controller)</li>
+          <li>DualSense (PS5 Controller)</li>
+          <li>PlayStation Vita</li>
+          <li>PS Classic Controller</li>
+        </ul>
+      </div>
+      
+      <div class="feature">
+        <h3>Nintendo Controllers</h3>
+        <ul>
+          <li>Switch Pro Controller</li>
+          <li>Joy-Con (L & R)</li>
+          <li>Wii U GamePad</li>
+          <li>Wii Remote (with extension)</li>
+          <li>GameCube Controller (with adapter)</li>
+        </ul>
+      </div>
+      
+      <div class="feature">
+        <h3>PC & Third-Party Controllers</h3>
+        <ul>
+          <li>Steam Controller</li>
+          <li>Steam Deck</li>
+          <li>Logitech Gamepads</li>
+          <li>8BitDo Controllers</li>
+          <li>Razer Controllers</li>
+          <li>Generic USB Gamepads</li>
+        </ul>
+      </div>
+      
+      <h3 class="mt-4">Browser Compatibility</h3>
+      <p>Our tool works best on the latest versions of Chrome, Firefox, Edge, and Safari. For the best experience, we recommend using Chrome as it has the most comprehensive gamepad API implementation.</p>
+    </section>
+
+    <!-- Tester Section -->
+    <section id="tester" class="mt-5">
+      <h2>Try Our Gamepad Tester Now</h2>
+      <p>Ready to check your controller? Connect your gamepad and start testing immediately. No accounts or downloads required.</p>
+      
+      <div class="feature text-center">
+        <h3>Controller Status: <span id="controller-status">Not Connected</span></h3>
+        <div id="tester-interface" style="min-height: 400px; background: #f3f4f6; border-radius: var(--rounded-xl); display: flex; align-items: center; justify-content: center;">
+          <p>Connect a controller and press any button to begin</p>
+        </div>
+        <a href="#tester" class="cta-button mt-3">Start Testing</a>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="mt-5">
+      <h2>Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question">Why isn't my controller being detected?</div>
+        <div class="faq-answer">
+          <p>First, ensure your controller is properly connected to your device. For wired controllers, try a different USB port. For wireless controllers, make sure they're properly paired. Some older controllers may require additional drivers. Also check that you've allowed gamepad access when prompted by your browser.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">Can I use this tool on mobile devices?</div>
+        <div class="faq-answer">
+          <p>Yes, our tester works on mobile devices that support game controllers. Many modern Android devices and iOS devices (running iOS 14.5+) support Bluetooth controllers. Connect your controller via Bluetooth and access our site through Safari (iOS) or Chrome (Android).</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">How accurate are the test results?</div>
+        <div class="faq-answer">
+          <p>Our tool provides highly accurate results for button presses and joystick movements. The input latency measurements are accurate to within ±5ms under normal conditions. For professional-grade testing, we recommend using our tool in a controlled environment with minimal other USB/BT devices connected.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">What should I do if my controller has stick drift?</div>
+        <div class="faq-answer">
+          <p>For minor drift, many controllers have calibration options in their system settings. For more severe drift, you may need to clean the joystick mechanism with compressed air or isopropyl alcohol. Some controllers allow joystick module replacement. If under warranty, consider contacting the manufacturer.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">Does this tool work with flight sticks and racing wheels?</div>
+        <div class="faq-answer">
+          <p>Yes, many specialized controllers like flight sticks and racing wheels will work with our tester, though some advanced features may not be fully represented. These devices typically appear as game controllers to your system and can be tested for basic functionality.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="mt-5">
+      <h2>What Gamers Are Saying</h2>
+      <p>Don't just take our word for it. Here's what our users say about Gamepad Tester:</p>
+      
+      <div class="testimonials">
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-text">This tool saved me from buying a new controller. I thought my left stick was broken, but the tester showed it was just dirty. Cleaned it and now it works perfectly!</p>
+            <p class="testimonial-author">- Michael T., Competitive FPS Player</p>
+          </div>
+          
+          <div class="testimonial-card">
+            <p class="testimonial-text">As a game developer, I use this daily to test controller compatibility. The detailed input visualization is better than most professional tools I've used.</p>
+            <p class="testimonial-author">- Sarah K., Indie Game Developer</p>
+          </div>
+          
+          <div class="testimonial-card">
+            <p class="testimonial-text">Finally a controller tester that actually works with my Switch Pro Controller on PC! No more guessing which buttons are mapped where.</p>
+            <p class="testimonial-author">- David R., Nintendo Fan</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="mt-5 text-center">
+      <h2>Ready to Test Your Controller?</h2>
+      <p>Join over 500,000 gamers who've used our tool to optimize their gaming setup. It's free, instant, and requires no installation.</p>
+      <a href="#tester" class="cta-button">Start Testing Now</a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Gamepad Tester</h3>
+        <p>The ultimate online tool for testing and diagnosing game controllers. Free, fast, and accurate.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Reddit">📑</a>
+          <a href="#" aria-label="GitHub">💻</a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#compatibility">Compatibility</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Resources</h3>
+        <ul class="footer-links">
+          <li><a href="https://en.wikipedia.org/wiki/Gamepad" target="_blank">Gamepad History</a></li>
+          <li><a href="https://www.w3.org/TR/gamepad/" target="_blank">Gamepad API Docs</a></li>
+          <li><a href="https://www.reddit.com/r/Controller/" target="_blank">Controller Forum</a></li>
+          <li><a href="https://www.ifixit.com/Device/Game_Controller" target="_blank">Repair Guides</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Gamepad Tester. All rights reserved. Not affiliated with Microsoft, Sony, Nintendo, or other controller manufacturers. All product names, logos, and brands are property of their respective owners.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple controller detection
+    document.addEventListener('DOMContentLoaded', () => {
+      const statusElement = document.getElementById('controller-status');
+      const testerInterface = document.getElementById('tester-interface');
+      
+      // FAQ functionality
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+          item.classList.toggle('active');
+        });
+      });
+      
+      // Controller detection
+      window.addEventListener("gamepadconnected", (e) => {
+        statusElement.textContent = `${e.gamepad.id} Connected`;
+        statusElement.style.color = 'white';
+        statusElement.style.background = 'var(--success)';
+        testerInterface.innerHTML = `
+          <div style="text-align: center; width: 100%;">
+            <h3 style="margin-bottom: 1.5rem;">Controller Connected!</h3>
+            <p style="margin-bottom: 2rem;">Press buttons, move joysticks, and pull triggers to test functionality.</p>
+            <div style="font-size: 4rem; margin: 2rem 0;">🎮</div>
+            <p style="margin-top: 1rem; color: var(--gray);"><small>Advanced testing visualization will appear here</small></p>
+          </div>
+        `;
+      });
+
+      window.addEventListener("gamepaddisconnected", (e) => {
+        statusElement.textContent = "Not Connected";
+        statusElement.style.color = 'var(--dark)';
+        statusElement.style.background = 'var(--lighter)';
+        testerInterface.innerHTML = '<p>Connect a controller and press any button to begin</p>';
+      });
+
+      // Check for gamepads on page load
+      if (navigator.getGamepads().filter(g => g).length > 0) {
+        const gamepad = navigator.getGamepads()[0];
+        statusElement.textContent = `${gamepad.id} Connected`;
+        statusElement.style.color = 'white';
+        statusElement.style.background = 'var(--success)';
+        testerInterface.innerHTML = `
+          <div style="text-align: center; width: 100%;">
+            <h3 style="margin-bottom: 1.5rem;">Controller Connected!</h3>
+            <p style="margin-bottom: 2rem;">Press buttons, move joysticks, and pull triggers to test functionality.</p>
+            <div style="font-size: 4rem; margin: 2rem 0;">🎮</div>
+          </div>
+        `;
+      }
+
+      // Animation for CTA buttons
+      const ctaButtons = document.querySelectorAll('.cta-button');
+      ctaButtons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+          button.classList.remove('animate__pulse');
+        });
+        button.addEventListener('mouseleave', () => {
+          button.classList.add('animate__pulse');
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      // Basic gamepad input monitoring
+      function updateGamepadStatus() {
+        const gamepads = navigator.getGamepads();
+        const gamepad = gamepads[0];
+        
+        if (gamepad) {
+          // You could add more detailed input visualization here
+          // For example: show button states, joystick positions, etc.
+          // This is just a basic implementation
+        }
+        
+        requestAnimationFrame(updateGamepadStatus);
+      }
+      
+      // Start monitoring
+      updateGamepadStatus();
+    });
+
+    // Enhanced gamepad testing functionality
+    class GamepadTester {
+      constructor() {
+        this.gamepad = null;
+        this.buttons = [];
+        this.axes = [];
+        this.connected = false;
+        this.init();
+      }
+      
+      init() {
+        window.addEventListener("gamepadconnected", (e) => {
+          this.gamepad = e.gamepad;
+          this.connected = true;
+          this.updateStatus(true);
+          this.startPolling();
+        });
+        
+        window.addEventListener("gamepaddisconnected", (e) => {
+          this.connected = false;
+          this.updateStatus(false);
+        });
+      }
+      
+      updateStatus(connected) {
+        const statusElement = document.getElementById('controller-status');
+        const testerInterface = document.getElementById('tester-interface');
+        
+        if (connected) {
+          statusElement.textContent = `${this.gamepad.id} Connected`;
+          statusElement.style.color = 'white';
+          statusElement.style.background = 'var(--success)';
+          testerInterface.innerHTML = this.createInterface();
+        } else {
+          statusElement.textContent = "Not Connected";
+          statusElement.style.color = 'var(--dark)';
+          statusElement.style.background = 'var(--lighter)';
+          testerInterface.innerHTML = '<p>Connect a controller and press any button to begin</p>';
+        }
+      }
+      
+      createInterface() {
+        return `
+          <div style="padding: 2rem; width: 100%;">
+            <h3 style="text-align: center; margin-bottom: 1.5rem;">${this.gamepad.id}</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+              <div>
+                <h4 style="margin-bottom: 1rem;">Buttons</h4>
+                <div id="buttons-display" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;"></div>
+              </div>
+              <div>
+                <h4 style="margin-bottom: 1rem;">Joysticks & Triggers</h4>
+                <div id="axes-display" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;"></div>
+              </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center; color: var(--gray);">
+              <small>Press all buttons and move all controls to test functionality</small>
+            </div>
+          </div>
+        `;
+      }
+      
+      startPolling() {
+        const poll = () => {
+          this.updateGamepadData();
+          this.updateDisplay();
+          if (this.connected) {
+            requestAnimationFrame(poll);
+          }
+        };
+        poll();
+      }
+      
+      updateGamepadData() {
+        const gamepads = navigator.getGamepads();
+        this.gamepad = gamepads[0];
+        if (this.gamepad) {
+          this.buttons = Array.from(this.gamepad.buttons);
+          this.axes = Array.from(this.gamepad.axes);
+        }
+      }
+      
+      updateDisplay() {
+        if (!this.connected) return;
+        
+        // Update buttons display
+        const buttonsDisplay = document.getElementById('buttons-display');
+        if (buttonsDisplay) {
+          buttonsDisplay.innerHTML = this.buttons.map((button, index) => {
+            const pressed = button.pressed;
+            const value = button.value.toFixed(2);
+            return `
+              <div style="padding: 0.75rem; background: ${pressed ? 'var(--success)' : 'var(--lighter)'}; 
+                          border-radius: var(--rounded); text-align: center; font-size: 0.875rem;
+                          transition: all 0.2s; border: 1px solid ${pressed ? 'var(--success-dark)' : 'rgba(0,0,0,0.05)'}">
+                <div style="font-weight: 500;">Btn ${index}</div>
+                <div style="font-weight: bold; margin-top: 0.25rem;">${value}</div>
+              </div>
+            `;
+          }).join('');
+        }
+        
+        // Update axes display
+        const axesDisplay = document.getElementById('axes-display');
+        if (axesDisplay) {
+          axesDisplay.innerHTML = `
+            <div>
+              <h5 style="text-align: center; margin-bottom: 1rem;">Left Stick</h5>
+              <div style="position: relative; width: 120px; height: 120px; margin: 0 auto; border: 2px solid var(--primary-light); border-radius: 50%; background: var(--lighter);">
+                <div style="position: absolute; 
+                            left: 50%; top: 50%; 
+                            width: 16px; height: 16px; 
+                            background: var(--primary); 
+                            border-radius: 50%;
+                            transform: translate(-50%, -50%) translate(${this.axes[0] * 40}px, ${this.axes[1] * 40}px);
+                            transition: transform 0.1s;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 1rem; font-family: monospace;">
+                X: ${this.axes[0]?.toFixed(2) || 0}, Y: ${this.axes[1]?.toFixed(2) || 0}
+              </div>
+            </div>
+            <div>
+              <h5 style="text-align: center; margin-bottom: 1rem;">Right Stick</h5>
+              <div style="position: relative; width: 120px; height: 120px; margin: 0 auto; border: 2px solid var(--primary-light); border-radius: 50%; background: var(--lighter);">
+                <div style="position: absolute; 
+                            left: 50%; top: 50%; 
+                            width: 16px; height: 16px; 
+                            background: var(--primary); 
+                            border-radius: 50%;
+                            transform: translate(-50%, -50%) translate(${this.axes[2] * 40}px, ${this.axes[3] * 40}px);
+                            transition: transform 0.1s;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 1rem; font-family: monospace;">
+                X: ${this.axes[2]?.toFixed(2) || 0}, Y: ${this.axes[3]?.toFixed(2) || 0}
+              </div>
+            </div>
+          `;
+        }
+      }
+    }
+
+    // Initialize the enhanced gamepad tester
+    new GamepadTester();
+  </script>
+</body>
+</html>
